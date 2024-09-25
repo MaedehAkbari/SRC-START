@@ -1,0 +1,280 @@
+/* Fonts */
+@import url("./fonts.css");
+
+/* Css Reset */
+
+/* Html */
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+/* Variables */
+:root {
+  --main-color: rgb(79, 209, 197);
+
+  --color-secondary-900: rgb(17, 24, 39);
+  --color-secondary-800: rgb(31, 41, 55);
+  --color-secondary-700: rgb(55, 65, 81);
+  --color-secondary-600: rgb(75, 85, 99);
+  --color-secondary-500: rgb(107, 114, 128);
+  --color-secondary-400: rgb(156, 163, 175);
+  --color-secondary-300: rgb(209, 213, 219);
+  --color-secondary-200: rgb(229, 231, 235);
+  --color-secondary-100: rgb(243, 244, 246);
+  --color-secondary-50: rgb(249, 250, 251);
+  --color-secondary-0: rgb(255, 255, 255);
+
+  --border-radius-tiny: 3px;
+  --border-radius-sm: 5px;
+  --border-radius-md: 7px;
+  --border-radius-lg: 10px;
+
+  --color-success: rgb(0, 192, 115);
+  --color-warning: rgb(255, 153, 0);
+  --color-error: rgb(255, 71, 87);
+  --color-red-700: rgb(185, 28, 28);
+  --color-red-800: rgb(153, 27, 27);
+  --color-red-500: rgb(239, 68, 68);
+  --color-red-300: rgb(252, 165, 165);
+  --color-red-100: rgb(254, 226, 226);
+}
+
+/* Components */
+.container {
+  max-width: 110rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  margin-top: 6rem;
+  height: 30rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Body */
+body {
+  font-family: Vazirmatn;
+  /* background-color: var(--color-secondary-100); */
+}
+
+/* Opening Button */
+.wrap {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.button {
+  min-width: 300px;
+  min-height: 60px;
+  display: inline-flex;
+  font-family: "Vazirmatn";
+  font-weight:700;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  background: var(--main-color);
+  background: linear-gradient(
+    90deg,
+    rgba(129, 230, 217, 1) 0%,
+    rgba(79, 209, 197, 1) 100%
+  );
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.button::before {
+  content: "";
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 3px solid #00ffcb;
+  box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.button:hover,
+.button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.button:hover::before,
+.button:focus::before {
+  opacity: 1;
+}
+
+.button::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 6px solid rgb(0, 255, 203);
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.button:hover::after,
+.button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+.transaction-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.transaction-title {
+  font-family: "Vazirmatn";
+  font-weight: 800;
+  font-size: 2rem;
+  background-color: var(--main-color);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: #000;
+  border: 3px solid #000;
+  animation: scale 1s ease 0s 1;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.searchbox-input {
+  border: 0;
+  outline: 0;
+  flex-basis: 23rem;
+  height: 5rem;
+  padding: 0 1.8rem;
+  border: 3px solid var(--main-color);
+  background-color: rgb(243 244 246);
+  border-radius: 8px;
+  font-family: "Vazirmatn";
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-image: url("./icons/search.svg");
+  background-position: 6px 6px;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease-in-out 0s;
+  cursor: text;
+}
+
+::placeholder {
+  color: var(--color-secondary-500);
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: "Vazirmatn";
+}
+
+.searchbox-input:focus {
+  box-shadow: 2px 2px 10px rgba(79, 209, 197, 0.64);
+  flex-basis: 35rem;
+}
+
+/* Table */
+.table {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.table tr th {
+  font-family: "Vazirmatn";
+  font-size: 2rem;
+  font-weight: 900;
+  border-bottom: none;
+  padding: 2rem 0;
+  border: 3px solid #141414;
+  background-color: var(--main-color);
+}
+
+.table tr td {
+  font-family: "Vazirmatn";
+  font-size: 1.6rem;
+  padding: 2rem 0;
+  font-weight: 900;
+  border-bottom: none;
+  border: 3px solid #000;
+  cursor: text;
+  transition: all 300ms ease-in;
+}
+
+.table tr td:hover {
+  background-color: #eee;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.fa-sort-up {
+  transition: all 300ms ease;
+  transform: rotate(180deg);
+}
+
+.fa-sort-down {
+  transition: all 300ms ease;
+  transform: rotate(360deg);
+}
+/* Media Queries */
+@media screen and (max-width: 560px) {
+  .transaction-title {
+    display: none;
+  }
+  .transaction-wrapper {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container{
+    padding: 15px;
+  }
+}
